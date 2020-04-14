@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_140419) do
+ActiveRecord::Schema.define(version: 2020_04_14_123539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2020_04_14_140419) do
     t.integer "player_id"
     t.integer "team_id"
     t.integer "achievement_id"
-    t.index ["game_id", "team_id", "player_id", "achievement_id"], name: "by_player_game_team_achievement", unique: true
   end
 
   create_table "games", force: :cascade do |t|
