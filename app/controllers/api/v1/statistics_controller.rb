@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::V1::StatisticsController < ApplicationController
 
   # POST /api/v1/statistics/add_player_achievement
@@ -39,6 +41,6 @@ class Api::V1::StatisticsController < ApplicationController
   private
 
   def statistics_params
-    params.permit(:game_id, :player_id, :team_id, :achievement_id)
+    params.require(:statistic).permit(:game_id, :player_id, :team_id, :achievement_id)
   end
 end
