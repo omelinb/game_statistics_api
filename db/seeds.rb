@@ -27,7 +27,7 @@ Game.all.each do |game|
       game_id: game.id,
       player_id: player.id,
       team_id: player.team.id,
-      achievement_id: [*Achievement.ids, nil]
+      achievement_id: [*Achievement.ids, nil].sample
     )
   end
 end
