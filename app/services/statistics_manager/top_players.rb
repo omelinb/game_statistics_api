@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module StatisticsManager
   class TopPlayers < ApplicationService
     def initialize(achievement_id, team_id, players_count)

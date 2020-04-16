@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module StatisticsManager
-  class CheckAchievement < ApplicationService
+  class LastAchievements < ApplicationService
     def initialize(achievement_id, player_id, games_count)
       @achievement_id = achievement_id
       @player_id      = player_id
