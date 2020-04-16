@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Api::V1::StatisticsController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
 
   # POST /api/v1/statistics/note_achievement
   def note_achievement
@@ -19,7 +20,7 @@ class Api::V1::StatisticsController < ApplicationController
     player_id      = params[:player_id]
     games_count    = params[:games_count]
 
-    last_achievements = StatisticsManager::CheckAchievement
+    last_achievements = StatisticsManager::LastAchievements
       .call(achievement_id, player_id, games_count)
 
     render json: last_achievements.any?, status: :ok
@@ -42,5 +43,9 @@ class Api::V1::StatisticsController < ApplicationController
 
   def statistics_params
     params.require(:statistic).permit(:game_id, :player_id, :team_id, :achievement_id)
+  end
+
+  def handle_record_not_found
+    render status: :not_found
   end
 end
